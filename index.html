@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./meet.png" rel="icon">
+    <title>Google Meet</title>
+    <style>
+        body {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        .left-side {
+            padding-top: 100px;
+            position: relative;
+
+
+        }
+
+        .right-side {
+            border: 0.5px solid black;
+            height: 600px;
+            width: 340px;
+
+            position: absolute;
+            right: 0px;
+            top: 100px;
+            margin-right: 15px;
+            border-radius: 10px;
+            padding: 8px
+        }
+
+        .btns {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .cross {
+            justify-content: end;
+            align-items: end;
+        }
+
+        .people {
+            margin-right: 270px;
+
+
+        }
+
+        .right-top {
+            margin-bottom: 20px;
+        }
+       
+
+        .btn {
+
+            border: none;
+            padding: 10px;
+            width: 100px;
+            border-radius: 20px;
+            background-color: lightblue;
+            margin-left: 5px;
+            margin-bottom: 15px;
+            cursor: pointer;
+
+        }
+
+        .text {
+            font-size: 10px;
+            color: gray;
+            font-family: cursive;
+
+
+        }
+
+        .namelist {
+
+            height: 470px;
+            width: 318px;
+            border: 0.5px solid rgba(196, 196, 196, 0.9);
+            border-radius: 10px;
+            padding: 10px;
+
+
+        }
+
+        .contributor {
+            margin: 5px;
+            border-bottom: 1px solid;
+        }
+
+        #student {
+            border: 0.5px solid gray;
+            width: 280px;
+            margin: 10px;
+            text-align: center;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+        .entry{
+            border: none;
+            background-color: lightgoldenrodyellow;
+            padding: 5px;
+            border-radius: 10px;
+            font-family: cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="left-side">
+            <img src="./Screenshot (338).png" height="600px" width="1050px">
+
+        </div>
+        <div class="right-side">
+            <div class="right-top">
+                <b class="people">People</b>
+                <i class="fa-solid fa-xmark cross cross"></i>
+
+            </div>
+            <div class="btns">
+                <button class="btn">
+                    <span class="fa-solid fa-microphone-slash"></span>
+                    <span>All muted</span>
+                </button>
+                <button class="btn">
+                    <span class="fa-solid fa-user-plus"></span>
+                    <span>All muted</span>
+                </button>
+            </div>
+            <span class="text">IN MEETING</span>
+            <div class="namelist">
+                <b class="contributor">contributors</b>
+                <input type="text" id="student" placeholder="search" onkeyup="load()">
+                <div class="entry  " id="studentcontainer">
+                    
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/7b6884abf8.js" crossorigin="anonymous"></script>
+    <script>
+       
+
+        const student = [
+            'suraj',
+            'shradha', 
+            'sejal',
+            'abhay', 
+            'divya',
+            'ashu',
+            'sunil', 
+            'abhi',
+            'vandita', 
+            'kiran',
+            'sanket',
+            'yash', 
+         
+           
+            ]
+
+        const students = document.getElementById('studentcontainer')
+
+        student.forEach((std) => {
+            students.innerHTML += `<div class="entry">${std}</div>`
+        }
+        )
+
+        function load(){
+            const searchtext = document.getElementById('student');
+            const inputtext = searchtext.value;
+            const text = inputtext.toLowerCase()
+
+            students.innerHTML = ''
+
+            const filteredstd = student.filter((std) => {
+                if(std.includes(text)){
+                    return true;
+                }
+            })
+            filteredstd.forEach((std) => {
+               
+                students.innerHTML += `<div class="entry">${std}</div>`
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>
